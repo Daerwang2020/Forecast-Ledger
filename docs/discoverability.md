@@ -36,9 +36,10 @@ GitHub documents topics as a discovery mechanism and recommends lowercase,
 hyphenated labels; the repository can have up to 20 topics. See [Classifying
 your repository with topics](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/classifying-your-repository-with-topics?apiVersion=2022-11-28).
 
-Also set a social preview image using the same visual language as
-`docs/assets/forecast-ledger-teaser.svg`, with the words “Forecast Ledger” and
-“sealed evidence for time-series forecasting” large enough to read in a feed.
+Also set a social preview image using
+`docs/assets/forecast-ledger-social-preview.png`, with the words “Forecast
+Ledger” and “one protocol · many official models · one auditable result” large
+enough to read in a feed.
 GitHub’s [repository customization guide](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository)
 covers the About box, social preview, README, citation, license, and community
 files.
