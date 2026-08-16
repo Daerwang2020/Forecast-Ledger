@@ -4,10 +4,22 @@ _TS-Repro is the stable package and CLI name._
 
 **Run every official forecasting model under exactly the same experimental protocol.**
 
+<p align="center">
+  <img src="docs/assets/forecast-ledger-teaser.svg" alt="Forecast Ledger: freeze the protocol, cross the official model seam, and seal the evidence" width="100%">
+</p>
+
+<p align="center"><em>Figure 1. Forecast Ledger separates the scientific question from the model implementation, then turns each run into inspectable evidence.</em></p>
+
 TS-Repro is a small, local-first toolkit for fair and reproducible time-series
 forecasting evaluation. It is not a leaderboard, a new model, a benchmark, or
 an audit service. It standardizes the evidence around a model while leaving the
 model implementation, optimizer, checkpoints, and repository untouched.
+
+The symbols in the figure are intentionally literal: a shield means the
+protocol is locked, a plug marks the narrow official-API seam, an orange arrow
+is the forecast output, and the purple document is the sealed artifact. This
+keeps the homepage readable at GitHub’s default width and avoids decorative
+icons that imply unsupported semantics.
 
 Every completed run produces a sealed experiment card:
 

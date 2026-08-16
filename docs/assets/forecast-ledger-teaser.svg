@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660" role="img" aria-labelledby="title desc">
+  <title id="title">Forecast Ledger teaser figure</title>
+  <desc id="desc">Three stages show datasets entering a frozen protocol, passing through official model adapters, and becoming sealed evidence with predictions, metrics, provenance, and a manifest. A legend explains the symbols.</desc>
+  <defs>
+    <linearGradient id="header" x1="0" x2="1"><stop offset="0" stop-color="#102a43"/><stop offset="1" stop-color="#2368c4"/></linearGradient>
+    <linearGradient id="blue" x1="0" x2="1"><stop offset="0" stop-color="#eaf3ff"/><stop offset="1" stop-color="#dcecff"/></linearGradient>
+    <linearGradient id="green" x1="0" x2="1"><stop offset="0" stop-color="#effaf6"/><stop offset="1" stop-color="#dcf4ea"/></linearGradient>
+    <linearGradient id="orange" x1="0" x2="1"><stop offset="0" stop-color="#fff5eb"/><stop offset="1" stop-color="#ffe6cc"/></linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#102a43" flood-opacity=".12"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5d7892"/></marker>
+    <style>
+      .ink{fill:#17212b;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+      .muted{fill:#637181;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+      .small{font-size:15px}.body{font-size:18px}.label{font-size:20px;font-weight:700}.title{font-size:34px;font-weight:800}.sub{font-size:17px}
+      .stage{fill:#fff;stroke:#d7e2ec;stroke-width:2}.card{stroke:#b6cade;stroke-width:1.5}.line{stroke:#5d7892;stroke-width:2.4;fill:none;marker-end:url(#arrow)}
+      .num{fill:#2368c4}.numtext{fill:#fff;font-size:16px;font-weight:800;font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+    </style>
+  </defs>
+  <rect width="1200" height="660" rx="22" fill="#f5f8fb"/>
+  <rect x="0" y="0" width="1200" height="124" rx="22" fill="url(#header)"/>
+  <rect x="0" y="102" width="1200" height="22" fill="url(#header)"/>
+  <text x="54" y="54" class="title" fill="#fff">Forecast Ledger</text>
+  <text x="54" y="88" class="sub" fill="#dcecff">One protocol · many official models · one auditable result</text>
+  <text x="1146" y="61" text-anchor="end" class="small" fill="#dcecff">TS-Repro</text>
+  <text x="1146" y="87" text-anchor="end" class="small" fill="#dcecff">local-first evidence</text>
+
+  <rect class="stage" x="44" y="153" width="284" height="300" rx="16" filter="url(#shadow)"/>
+  <circle class="num" cx="76" cy="188" r="17"/><text class="numtext" x="76" y="194" text-anchor="middle">1</text>
+  <text class="ink label" x="105" y="195">Freeze the question</text>
+  <text class="muted small" x="70" y="225">same data, split, horizon, metrics</text>
+  <rect class="card" x="70" y="248" width="232" height="51" rx="10" fill="url(#blue)"/>
+  <circle cx="91" cy="273" r="10" fill="#2368c4"/><path d="M85 273h12M91 267v12" stroke="#fff" stroke-width="2"/>
+  <text class="ink body" x="112" y="280">Dataset + official split</text>
+  <rect class="card" x="70" y="313" width="232" height="51" rx="10" fill="url(#blue)"/>
+  <path d="M84 328h15v18H84zM88 324h15v22H88z" fill="none" stroke="#2368c4" stroke-width="2"/>
+  <text class="ink body" x="112" y="345">Frozen protocol</text>
+  <rect class="card" x="70" y="378" width="232" height="51" rx="10" fill="#f8fbfd"/>
+  <path d="M89 389l10 4v8c0 8-10 13-10 13s-10-5-10-13v-8z" fill="none" stroke="#5d7892" stroke-width="2"/>
+  <text class="ink body" x="112" y="411">No test-time leakage</text>
+
+  <rect class="stage" x="365" y="153" width="464" height="300" rx="16" filter="url(#shadow)"/>
+  <circle class="num" cx="397" cy="188" r="17"/><text class="numtext" x="397" y="194" text-anchor="middle">2</text>
+  <text class="ink label" x="426" y="195">Cross the official seam</text>
+  <text class="muted small" x="391" y="225">TS-Repro coordinates; upstream code stays upstream</text>
+  <rect x="391" y="252" width="188" height="164" rx="12" fill="url(#orange)" stroke="#e7b783" stroke-width="1.5"/>
+  <text class="ink body" x="485" y="278" text-anchor="middle" font-weight="700">Official model APIs</text>
+  <rect x="411" y="295" width="148" height="29" rx="7" fill="#fff" stroke="#e7b783"/><text class="ink small" x="485" y="315" text-anchor="middle">DLinear · PatchTST</text>
+  <rect x="411" y="333" width="148" height="29" rx="7" fill="#fff" stroke="#e7b783"/><text class="ink small" x="485" y="353" text-anchor="middle">TimesNet · N-HiTS</text>
+  <rect x="411" y="371" width="148" height="29" rx="7" fill="#fff" stroke="#e7b783"/><text class="ink small" x="485" y="391" text-anchor="middle">Chronos · TimesFM · …</text>
+  <rect x="616" y="252" width="187" height="164" rx="12" fill="url(#green)" stroke="#9bcbb8" stroke-width="1.5"/>
+  <text class="ink body" x="709" y="278" text-anchor="middle" font-weight="700">Bridge contract</text>
+  <path d="M683 304h53v31h-53zM670 312h13v15h-13zM736 312h13v15h-13z" fill="none" stroke="#2c8d6b" stroke-width="2"/>
+  <text class="ink small" x="709" y="359" text-anchor="middle">train.npz · test.npz</text>
+  <text class="ink small" x="709" y="383" text-anchor="middle">finite predictions</text>
+  <text class="muted small" x="709" y="405" text-anchor="middle">revision + runtime logged</text>
+  <path class="line" d="M579 335h37"/>
+
+  <rect class="stage" x="866" y="153" width="290" height="300" rx="16" filter="url(#shadow)"/>
+  <circle class="num" cx="898" cy="188" r="17"/><text class="numtext" x="898" y="194" text-anchor="middle">3</text>
+  <text class="ink label" x="927" y="195">Seal the evidence</text>
+  <text class="muted small" x="892" y="225">readable, verifiable, rerunnable</text>
+  <rect x="892" y="255" width="238" height="45" rx="9" fill="url(#green)" stroke="#9bcbb8"/><path d="M913 266v12M909 271h8" stroke="#2c8d6b" stroke-width="2"/><text class="ink body" x="938" y="283">predictions + targets</text>
+  <rect x="892" y="313" width="238" height="45" rx="9" fill="url(#blue)" stroke="#b6cade"/><path d="M911 326h18M911 332h18M911 338h12" stroke="#2368c4" stroke-width="2"/><text class="ink body" x="938" y="341">metrics + runtime</text>
+  <rect x="892" y="371" width="238" height="45" rx="9" fill="#f3efff" stroke="#baa9df"/><path d="M913 382h17v20h-17zM917 378h9" fill="none" stroke="#7252a7" stroke-width="2"/><text class="ink body" x="938" y="399">manifest + provenance</text>
+  <path class="line" d="M829 335h37"/>
+
+  <rect x="44" y="480" width="1112" height="112" rx="16" fill="#fff" stroke="#d7e2ec" stroke-width="2"/>
+  <text class="ink label" x="70" y="516">Symbol key</text>
+  <circle cx="79" cy="551" r="9" fill="#2368c4"/><path d="M74 551h10M79 546v10" stroke="#fff" stroke-width="1.7"/><text class="muted small" x="97" y="557">source / split</text>
+  <path d="M217 538l10 4v8c0 8-10 13-10 13s-10-5-10-13v-8z" fill="none" stroke="#5d7892" stroke-width="2"/><text class="muted small" x="239" y="557">protocol lock</text>
+  <path d="M359 543h36v18h-36zM351 548h8v9h-8zM395 548h8v9h-8z" fill="none" stroke="#2c8d6b" stroke-width="2"/><text class="muted small" x="419" y="557">official API seam</text>
+  <path d="M570 541l19 7-19 7z" fill="#e87722"/><text class="muted small" x="602" y="557">forecast output</text>
+  <path d="M731 540h17v22h-17zM735 536h9" fill="none" stroke="#7252a7" stroke-width="2"/><text class="muted small" x="761" y="557">sealed artifact</text>
+  <text class="ink body" x="1088" y="518" text-anchor="end" font-weight="700">No leaderboard.</text>
+  <text class="muted small" x="1088" y="546" text-anchor="end">The unit of comparison is a</text>
+  <text class="muted small" x="1088" y="568" text-anchor="end">verifiable run card.</text>
+</svg>

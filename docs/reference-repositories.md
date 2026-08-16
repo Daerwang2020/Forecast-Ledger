@@ -12,6 +12,8 @@ are useful reference points for maintainers and contributors:
 | [Aim](https://github.com/aimhubio/aim) | Local experiment browsing and run-oriented visual inspection. | Keep the viewer static and artifact-backed; no service or telemetry is required. |
 | [DVC VS Code extension](https://github.com/iterative/vscode-dvc) | Treat data and experiment state as inspectable, versioned artifacts. | Use manifests and provenance files, while leaving storage and Git workflow to the researcher. |
 | [Evidently](https://github.com/evidentlyai/evidently) | Reusable evaluation/monitoring views. | Keep scientific metrics defined by the frozen protocol, not by a dashboard default. |
+| [TIME](https://github.com/zqiao11/TIME) | Current task-centric TSFM benchmark presentation: compact task cards, fresh evaluation settings, and per-window inspection. | Borrow the inspectable evidence language; keep Forecast Ledger’s no-ranking policy and sealed manifests. |
+| [Kairos](https://github.com/foundation-model-research/Kairos) / [Aurora](https://github.com/decisionintelligence/Aurora) | Recent TSFM repositories use one high-level teaser figure to explain the model/data path before the implementation details. | Use the same “one figure, one story” discipline for the protocol and evidence path, not for a new model claim. |
 
 The common thread is separation of concerns: a framework can make execution
 convenient while a result ledger preserves what actually happened. Forecast
