@@ -1,0 +1,11 @@
+name: timebridge-official
+priority: P1
+kind: official
+enabled: false
+disabled_reason: Production official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: supervised
+official_repository: https://github.com/Hank0626/TimeBridge
+repository_dir: ${TS_REPRO_MODEL_ROOT}/timebridge
+official_revision: 0f9a83fbc3e1260c9ddd527c522dff0ce4b9554b
+commands: {train: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/timebridge_bridge.py", train], predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/timebridge_bridge.py", predict]}

@@ -1,0 +1,6 @@
+name: Solar
+source: {path: "${TS_REPRO_DATA_ROOT}/Solar/solar.csv", format: csv}
+schema: {time_column: __index__, target_columns: [MW]}
+splits: {train: 0.7, val: 0.1, test: 0.2}
+protocol: {input_length: 96, prediction_length: 96, normalization: standard, test_drop_last: false}
+suite: {name: ltsf-regression-v1, frequency: 15min, horizons: [96, 192, 336, 720]}

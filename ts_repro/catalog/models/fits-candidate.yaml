@@ -1,0 +1,12 @@
+name: fits
+priority: P1
+kind: official
+enabled: false
+disabled_reason: Production official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: supervised
+official_repository: https://github.com/VEWOXIC/FITS
+repository_dir: ${TS_REPRO_MODEL_ROOT}/fits
+official_revision: d040bb015b6299da26d879b90dd19c80fb72c160
+official_entrypoint: run_longExp_F.py
+commands: {train: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/fits_bridge.py", train], predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/fits_bridge.py", predict]}

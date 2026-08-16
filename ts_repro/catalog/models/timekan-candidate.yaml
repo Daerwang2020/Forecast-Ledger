@@ -1,0 +1,11 @@
+name: timekan
+priority: P1
+kind: official
+enabled: false
+disabled_reason: Production official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: supervised
+official_repository: https://github.com/huangst21/TimeKAN
+repository_dir: ${TS_REPRO_MODEL_ROOT}/timekan
+official_revision: 3a7c366a9e8547fd8840c5d27f25ee3e30615e33
+commands: {train: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/timekan_bridge.py", train], predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/timekan_bridge.py", predict]}

@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+experiments/
+comparisons/
+*.egg-info/
+build/
+# Model weights are local artifacts; publish adapters/configuration, not blobs.
+*.safetensors
+*.ckpt
+*.pth
+*.pt
+._*

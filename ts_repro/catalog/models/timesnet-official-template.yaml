@@ -1,0 +1,14 @@
+name: timesnet-official
+priority: P0
+kind: official
+enabled: false
+disabled_reason: Production official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: supervised
+official_repository: https://github.com/thuml/Time-Series-Library
+repository_dir: ${TS_REPRO_MODEL_ROOT}/timesnet-library
+official_revision: 4e938a1767106324dd753b2a44832bf870a0252e
+official_entrypoint: run.py
+commands:
+  train: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/timesnet_bridge.py", train]
+  predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/timesnet_bridge.py", predict]

@@ -1,0 +1,6 @@
+name: ETTm2
+source: {path: "${TS_REPRO_DATA_ROOT}/ETT/ETTm2.csv", format: csv}
+schema: {time_column: date, target_columns: all}
+splits: {rows: {train: 34560, val: 11520, test: 11520}}
+protocol: {input_length: 96, prediction_length: 96, normalization: standard, test_drop_last: false}
+suite: {name: ltsf-regression-v1, frequency: 15min, horizons: [96, 192, 336, 720]}

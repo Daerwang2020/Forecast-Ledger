@@ -1,0 +1,14 @@
+name: patchtst-official
+priority: P0
+kind: official
+enabled: false
+disabled_reason: Production official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: supervised
+official_repository: https://github.com/yuqinie98/PatchTST
+repository_dir: ${TS_REPRO_MODEL_ROOT}/patchtst
+official_revision: 204c21efe0b39603ad6e2ca640ef5896646ab1a9
+commands:
+  train: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/patchtst_bridge.py", train]
+  predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/patchtst_bridge.py", predict]
+official_hyperparameters: Use the paper/official-repo setting and record any explicit overrides here.

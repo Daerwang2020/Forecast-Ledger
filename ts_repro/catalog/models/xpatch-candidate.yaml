@@ -1,0 +1,11 @@
+name: xpatch
+priority: P1
+kind: official
+enabled: false
+disabled_reason: Production official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: supervised
+official_repository: https://github.com/stitsyuk/xPatch
+repository_dir: ${TS_REPRO_MODEL_ROOT}/xpatch
+official_revision: d12eecaa11409109582f5e2ffdebcc2cffd47b3e
+commands: {train: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/xpatch_bridge.py", train], predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/xpatch_bridge.py", predict]}

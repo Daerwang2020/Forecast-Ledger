@@ -1,0 +1,7 @@
+model	repository	local_path	model_sha256	verification
+Chronos-2	amazon/chronos-2	checkpoints/chronos-2/model.safetensors	ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42	predict_df 1x8x13 pass
+TimesFM	google/timesfm-2.5-200m-pytorch	checkpoints/timesfm-2.5-200m-pytorch/model.safetensors	2f776efe6245e42b24bc4153ffdf61810140210e4bd3b01fb21f7aa779ab6ce8	forecast point 1x8 quantile 1x8x10 pass
+Moirai-2	Salesforce/moirai-2.0-R-small	checkpoints/moirai-2.0-R-small/model.safetensors	fb5652a3db8ea572606221b7cb1e77bb8962b168e4d4cc752cf31ceb04074669	module forward 1x40x576 pass
+TTM	ibm-granite/granite-timeseries-ttm-r2	checkpoints/granite-timeseries-ttm-r2/model.safetensors	a706726a7eb01bbcb42994b7dcb3c06ea9557898dbae8d480eb04fe8ccb89710	prediction 1x96x1 pass
+Time-MoE	Maple728/TimeMoE-50M	checkpoints/TimeMoE-50M/model.safetensors	0127209833663df6f5ae3cf1c3316f739a8dd1dae27e59036268bbfdb48f91a4	forward 1x64x8 pass; generate blocked by DynamicCache drift
+Timer	thuml/timer-base-84m	checkpoints/timer-base-84m/model.safetensors	9c3d18f12ffe1ea7d4fa70eb3304b26e3841164a6a265fbae4f7a05cd213aa3d	forward 1x96 pass; generate blocked by DynamicCache drift

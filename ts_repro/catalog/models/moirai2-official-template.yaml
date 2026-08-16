@@ -1,0 +1,12 @@
+name: moirai2-official
+priority: P2
+kind: official
+enabled: false
+disabled_reason: Production checkpoint-backed official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: zero-shot
+official_repository: https://github.com/SalesforceAIResearch/uni2ts
+repository_dir: ${TS_REPRO_MODEL_ROOT}/moirai2
+official_revision: cfd46d4510ed8896f263116f32928eede05b0a75
+official_checkpoint: Salesforce/moirai-2.0-R-small
+commands: {predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/moirai2_bridge.py", predict]}

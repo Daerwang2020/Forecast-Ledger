@@ -1,0 +1,11 @@
+name: amplifier
+priority: P1
+kind: official
+enabled: false
+disabled_reason: Production official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: supervised
+official_repository: https://github.com/aikunyi/amplifier
+repository_dir: ${TS_REPRO_MODEL_ROOT}/amplifier
+official_revision: 6cc089312254a0eeda7767342f690fd4536a1758
+commands: {train: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/amplifier_bridge.py", train], predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/amplifier_bridge.py", predict]}

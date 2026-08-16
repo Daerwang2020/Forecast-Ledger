@@ -1,0 +1,12 @@
+name: timesfm-official
+priority: P2
+kind: official
+enabled: false
+disabled_reason: Production checkpoint-backed official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: zero-shot
+official_repository: https://github.com/google-research/timesfm
+repository_dir: ${TS_REPRO_MODEL_ROOT}/timesfm
+official_revision: 3dae50b20d7a724981e8ea36cda75578f80dd2dc
+official_checkpoint: google/timesfm-2.5-200m-pytorch
+commands: {predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/timesfm_bridge.py", predict]}

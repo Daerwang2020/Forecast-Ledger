@@ -1,0 +1,12 @@
+name: ttm-official
+priority: P2
+kind: official
+enabled: false
+disabled_reason: Production checkpoint-backed official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: zero-shot
+official_repository: https://github.com/ibm-granite/granite-tsfm
+repository_dir: ${TS_REPRO_MODEL_ROOT}/ttm
+official_revision: 9739fa59b61bd9f15cbfb06e5dc3dab28c72ee8d
+official_checkpoint: ibm-granite/granite-timeseries-ttm-r2
+commands: {predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/ttm_bridge.py", predict]}

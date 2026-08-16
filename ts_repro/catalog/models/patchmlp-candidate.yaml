@@ -1,0 +1,12 @@
+name: patchmlp
+priority: P1
+kind: benchmark_reference
+enabled: false
+disabled_reason: Production DUET benchmark baseline bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: supervised
+official_repository: https://github.com/decisionintelligence/TFB
+repository_dir: ${TS_REPRO_MODEL_ROOT}/tfb
+official_revision: a0087ed7da48218504237d37165d0cb401c942c3
+benchmark_model: patchmlp.PatchMLP
+commands: {train: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/patchmlp_bridge.py", train], predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/patchmlp_bridge.py", predict]}

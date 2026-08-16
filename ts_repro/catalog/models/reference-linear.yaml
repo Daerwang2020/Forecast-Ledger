@@ -1,0 +1,9 @@
+name: reference-linear
+priority: P0
+kind: reference
+enabled: true
+adapter: reference_linear
+mode: supervised
+description: Deterministic protocol sanity check; not an official model or paper baseline.
+parameters:
+  ridge: 0.000001

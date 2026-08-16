@@ -1,0 +1,13 @@
+name: nhits-official
+priority: P0
+kind: official
+enabled: false
+disabled_reason: Production official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: supervised
+official_repository: https://github.com/Nixtla/neuralforecast
+repository_dir: ${TS_REPRO_MODEL_ROOT}/nhits
+official_revision: ad099fce08e1f4e36cdbf89301f69bd3b820fd41
+commands:
+  train: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/nhits_bridge.py", train]
+  predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/nhits_bridge.py", predict]

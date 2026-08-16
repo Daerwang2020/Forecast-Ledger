@@ -1,0 +1,14 @@
+name: itransformer-official
+priority: P0
+kind: official
+enabled: false
+disabled_reason: Production official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: supervised
+official_repository: https://github.com/thuml/iTransformer
+repository_dir: ${TS_REPRO_MODEL_ROOT}/itransformer
+official_revision: c2426e68ca13f74aaec08045c5c724d8ad328124
+commands:
+  train: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/itransformer_bridge.py", train]
+  predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/itransformer_bridge.py", predict]
+official_hyperparameters: Use the paper/official-repo setting and record any explicit overrides here.

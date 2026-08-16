@@ -1,0 +1,14 @@
+name: toy
+source:
+  path: CHANGE_ME_TO_A_CSV
+schema:
+  time_column: timestamp
+  target_columns: [value]
+splits:
+  train: 0.60
+  val: 0.20
+  test: 0.20
+protocol:
+  input_length: 24
+  prediction_length: 6
+  normalization: standard

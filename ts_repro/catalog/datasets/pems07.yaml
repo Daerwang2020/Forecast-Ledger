@@ -1,0 +1,6 @@
+name: PEMS07
+source: {path: "${TS_REPRO_DATA_ROOT}/PEMS/PEMS07.npz", format: npz, array_key: data, array_channel: 0}
+schema: {time_column: __index__, target_columns: all}
+splits: {train: 0.6, val: 0.2, test: 0.2}
+protocol: {input_length: 12, prediction_length: 12, normalization: standard, test_drop_last: false}
+suite: {name: ltsf-regression-v1, frequency: 5min, horizons: [12]}

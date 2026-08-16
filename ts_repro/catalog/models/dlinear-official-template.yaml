@@ -1,0 +1,14 @@
+name: dlinear-official
+priority: P0
+kind: official
+enabled: false
+disabled_reason: Production official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: supervised
+official_repository: https://github.com/cure-lab/LTSF-Linear
+repository_dir: ${TS_REPRO_MODEL_ROOT}/dlinear
+official_revision: 0c113668a3b88c4c4ee586b8c5ec3e539c4de5a6
+commands:
+  train: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/dlinear_bridge.py", train]
+  predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/dlinear_bridge.py", predict]
+official_hyperparameters: Use the paper/official-repo setting and record any explicit overrides here.

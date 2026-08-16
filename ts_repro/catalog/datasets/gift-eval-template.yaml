@@ -1,0 +1,9 @@
+name: gift-eval-template
+source:
+  format: gift_eval
+  dataset: electricity/15T
+  term: short
+  storage_env_var: GIFT_EVAL
+  # storage_path: ${GIFT_EVAL}; omit when the official environment variable is set.
+protocol: {input_length: 96, normalization: standard, test_drop_last: false}
+suite: {name: gift-eval, split_owner: official-gift-eval-dataset-api}

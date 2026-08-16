@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forecast Ledger — run browser</title>
+  <style>
+    :root { color-scheme: light; --ink:#17212b; --muted:#637181; --line:#dbe3ea; --paper:#fff; --wash:#f5f8fb; --accent:#2368c4; --accent2:#e87722; }
+    * { box-sizing: border-box; } body { margin:0; font:15px/1.5 system-ui,-apple-system,sans-serif; color:var(--ink); background:var(--wash); }
+    header { padding:28px max(20px,calc((100vw - 1180px)/2)); background:linear-gradient(120deg,#102a43,#2368c4); color:#fff; }
+    header h1 { margin:0 0 4px; font-size:clamp(1.6rem,3vw,2.4rem); } header p { margin:0; opacity:.86; max-width:720px; }
+    main { max-width:1180px; margin:22px auto; padding:0 20px 48px; } .grid { display:grid; grid-template-columns:1.35fr .65fr; gap:18px; }
+    .card { background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:18px; box-shadow:0 5px 18px #102a430a; }
+    .card h2 { margin:0 0 12px; font-size:1.05rem; } .controls { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+    label { color:var(--muted); font-size:.85rem; display:grid; gap:3px; } select,button { border:1px solid #b9c7d5; background:#fff; border-radius:8px; padding:8px 10px; color:var(--ink); }
+    button { cursor:pointer; } button:hover,button:focus-visible { border-color:var(--accent); outline:2px solid #2368c433; }
+    table { width:100%; border-collapse:collapse; font-size:.9rem; } th,td { text-align:left; padding:9px 7px; border-bottom:1px solid var(--line); } th { color:var(--muted); font-weight:600; }
+    tbody tr { cursor:pointer; } tbody tr:hover,tbody tr[aria-selected=true] { background:#eef5ff; } .pill { display:inline-block; padding:2px 7px; border-radius:999px; background:#e8f1ff; color:#1859a6; font-size:.75rem; }
+    svg { width:100%; height:auto; display:block; } .axis { stroke:#b9c7d5; stroke-width:1; } .trace-target { fill:none; stroke:var(--ink); stroke-width:2; } .trace-pred { fill:none; stroke:var(--accent2); stroke-width:2; stroke-dasharray:5 4; }
+    .legend { display:flex; gap:16px; color:var(--muted); font-size:.8rem; } .legend span::before { content:""; display:inline-block; width:22px; border-top:2px solid var(--ink); margin:0 6px 3px 0; } .legend .pred::before { border-color:var(--accent2); border-top-style:dashed; }
+    .empty { color:var(--muted); padding:24px 0; } .method text { font-size:12px; fill:var(--ink); } .method rect { fill:#f7fbff; stroke:#8db3e5; rx:8; } .method path { stroke:#7f94aa; stroke-width:2; fill:none; marker-end:url(#arrow); }
+    @media (max-width:760px) { main { margin-top:12px; } .grid { grid-template-columns:1fr; } .card { padding:14px; } th:nth-child(4),td:nth-child(4),th:nth-child(5),td:nth-child(5) { display:none; } }
+  </style>
+</head>
+<body>
+<header><h1>Forecast Ledger</h1><p>TS-Repro’s evidence browser: inspect sealed runs, protocol choices, and forecast traces. There is no leaderboard here—only a readable record of what was run.</p></header>
+<main>
+  <section class="card" aria-labelledby="method-title"><h2 id="method-title">Method contract</h2>
+    <svg class="method" viewBox="0 0 900 150" role="img" aria-label="Dataset flows through protocol and official adapter to predictions and a sealed run card">
+      <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7f94aa"/></marker></defs>
+      <rect x="20" y="52" width="135" height="46"/><text x="87" y="80" text-anchor="middle">Dataset + split</text>
+      <rect x="210" y="52" width="145" height="46"/><text x="282" y="80" text-anchor="middle">Frozen protocol</text>
+      <rect x="410" y="52" width="145" height="46"/><text x="482" y="80" text-anchor="middle">Official adapter</text>
+      <rect x="610" y="52" width="115" height="46"/><text x="667" y="80" text-anchor="middle">Predictions</text>
+      <rect x="780" y="52" width="100" height="46"/><text x="830" y="80" text-anchor="middle">Sealed card</text>
+      <path d="M155 75h55M355 75h55M555 75h55M725 75h55"/>
+    </svg>
+  </section>
+  <div class="grid" style="margin-top:18px">
+    <section class="card"><h2>Run ledger</h2><div class="controls">
+      <label>Model<select id="model-filter"><option value="">All models</option></select></label>
+      <label>Dataset<select id="dataset-filter"><option value="">All datasets</option></select></label>
+      <label>Metric<select id="metric-filter"><option>mae</option><option>mse</option><option>rmse</option><option>mape</option><option>smape</option></select></label>
+    </div><div id="table-wrap"></div></section>
+    <section class="card"><h2>Selected run</h2><div id="detail" class="empty">Select a run to inspect its trace.</div><div id="trace-wrap"></div></section>
+  </div>
+</main>
+<script>
+const RUNS = [];
+const metric = id => document.getElementById(id);
+const unique = key => [...new Set(RUNS.map(run => run[key]).filter(Boolean))].sort();
+function fillSelect(id, values) { const select=metric(id); values.forEach(value => { const option=document.createElement('option'); option.value=value; option.textContent=value; select.append(option); }); }
+function filtered() { const model=metric('model-filter').value, dataset=metric('dataset-filter').value; return RUNS.filter(run => (!model||run.model===model)&&(!dataset||run.dataset===dataset)); }
+function renderTable() { const rows=filtered(), selected=metric('selected-id'); if (!rows.length) { metric('table-wrap').innerHTML='<p class="empty">No completed runs found. Build this viewer with <code>tsr visualize --runs-dir ...</code>.</p>'; return; }
+  const key=metric('metric-filter').value; const table=document.createElement('table'); table.innerHTML='<thead><tr><th>Model</th><th>Dataset</th><th>Metric</th><th>Mode</th><th>Evidence</th></tr></thead><tbody></tbody>'; const body=table.querySelector('tbody');
+  rows.forEach(run=>{ const tr=document.createElement('tr'); tr.tabIndex=0; tr.setAttribute('aria-selected',run.id===selected); tr.innerHTML=`<td>${run.model}</td><td>${run.dataset}</td><td>${run.metrics[key] == null ? '—' : Number(run.metrics[key]).toFixed(5)}</td><td>${run.mode}</td><td><span class="pill">${run.sealed?'sealed':'unsealed'}</span></td>`; tr.onclick=()=>selectRun(run.id); tr.onkeydown=e=>{if(e.key==='Enter')selectRun(run.id)}; body.append(tr); }); metric('table-wrap').replaceChildren(table); }
+function selectRun(id) { metric('selected-id').value=id; const run=RUNS.find(item=>item.id===id); if(!run)return; metric('detail').innerHTML=`<p><strong>${run.model}</strong> on <strong>${run.dataset}</strong><br><span class="pill">${run.sealed?'sealed evidence':'unsealed diagnostic'}</span> · ${run.mode} · seed ${run.seed ?? '—'}</p><p>MAE ${run.metrics.mae?.toFixed(5) ?? '—'} · RMSE ${run.metrics.rmse?.toFixed(5) ?? '—'} · ${run.path}</p>`; drawTrace(run.series); renderTable(); }
+function drawTrace(series) { const target=series.target||[], prediction=series.prediction||[]; if(!target.length){metric('trace-wrap').innerHTML='<p class="empty">This run has no readable prediction trace.</p>';return;} const width=600,height=220,pad=28,all=target.concat(prediction),lo=Math.min(...all),hi=Math.max(...all),span=hi-lo||1; const points=values=>values.map((v,i)=>`${pad+i*(width-pad*2)/Math.max(values.length-1,1)},${height-pad-(v-lo)*(height-pad*2)/span}`).join(' '); metric('trace-wrap').innerHTML=`<div class="legend"><span>target</span><span class="pred">prediction</span></div><svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Target and prediction trace"><line class="axis" x1="${pad}" x2="${pad}" y1="${pad}" y2="${height-pad}"/><line class="axis" x1="${pad}" x2="${width-pad}" y1="${height-pad}" y2="${height-pad}"/><polyline class="trace-target" points="${points(target)}"/><polyline class="trace-pred" points="${points(prediction)}"/></svg>`; }
+fillSelect('model-filter',unique('model')); fillSelect('dataset-filter',unique('dataset')); const hidden=document.createElement('input'); hidden.id='selected-id'; hidden.type='hidden'; document.body.append(hidden); ['model-filter','dataset-filter','metric-filter'].forEach(id=>metric(id).onchange=renderTable); renderTable();
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+name: chronos-official
+priority: P2
+kind: official
+enabled: false
+disabled_reason: Production checkpoint-backed official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: zero-shot
+official_repository: https://github.com/amazon-science/chronos-forecasting
+repository_dir: ${TS_REPRO_MODEL_ROOT}/chronos
+official_revision: 7dc4435706a4454feb79df44ca9f33631f3027bf
+official_checkpoint: amazon/chronos-2
+commands:
+  predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/chronos_bridge.py", predict]
+official_hyperparameters: Record the official context length, sample count, and point-forecast reduction here.

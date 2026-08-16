@@ -1,0 +1,6 @@
+name: Electricity
+source: {path: "${TS_REPRO_DATA_ROOT}/Electricity/electricity.csv", format: csv}
+schema: {time_column: date, target_columns: all}
+splits: {train: 0.7, val: 0.1, test: 0.2}
+protocol: {input_length: 96, prediction_length: 96, normalization: standard, test_drop_last: false}
+suite: {name: ltsf-regression-v1, frequency: 1h, horizons: [96, 192, 336, 720]}

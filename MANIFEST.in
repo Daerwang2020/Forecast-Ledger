@@ -1,0 +1,9 @@
+include LICENSE
+include README.md
+recursive-include ts_repro/catalog *.yaml
+recursive-include docs *.md
+global-exclude ._*
+global-exclude __pycache__
+global-exclude *.py[cod]
+prune build
+prune *.egg-info

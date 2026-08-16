@@ -1,0 +1,11 @@
+name: duet
+priority: P1
+kind: official
+enabled: false
+disabled_reason: Production DUET benchmark baseline bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: supervised
+official_repository: https://github.com/decisionintelligence/DUET
+repository_dir: ${TS_REPRO_MODEL_ROOT}/duet
+official_revision: dcc6e6780a9138731b64b9b5398a94a1d97033f0
+commands: {train: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/duet_bridge.py", train], predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/duet_bridge.py", predict]}

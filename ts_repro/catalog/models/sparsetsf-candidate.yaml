@@ -1,0 +1,11 @@
+name: sparsetsf
+priority: P1
+kind: official
+enabled: false
+disabled_reason: Production official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: supervised
+official_repository: https://github.com/lss-1138/SparseTSF
+repository_dir: ${TS_REPRO_MODEL_ROOT}/sparsetsf
+official_revision: b8c2740eecc84d8095ffce49ba5acafe68e53bb8
+commands: {train: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/sparsetsf_bridge.py", train], predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/sparsetsf_bridge.py", predict]}

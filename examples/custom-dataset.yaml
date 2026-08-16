@@ -1,0 +1,12 @@
+name: custom-forecasting-dataset
+paths:
+  train: train.csv
+  val: val.csv
+  test: test.csv
+schema:
+  time_column: timestamp
+  target_columns: [target]
+protocol:
+  input_length: 96
+  prediction_length: 24
+  normalization: standard

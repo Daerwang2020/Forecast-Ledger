@@ -1,0 +1,12 @@
+name: pdf
+priority: P1
+kind: official
+enabled: false
+disabled_reason: Production official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: supervised
+official_repository: https://github.com/Hank0626/PDF
+repository_dir: ${TS_REPRO_MODEL_ROOT}/pdf
+official_revision: 6c654a1f53f036ba4efa7706986370a812a85917
+official_entrypoint: run_longExp.py
+commands: {train: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/pdf_bridge.py", train], predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/pdf_bridge.py", predict]}

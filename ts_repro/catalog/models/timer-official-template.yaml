@@ -1,0 +1,13 @@
+name: timer-official
+priority: P2
+kind: official
+enabled: false
+disabled_reason: Production checkpoint-backed official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: zero-shot
+official_repository: https://github.com/thuml/Large-Time-Series-Model
+repository_dir: ${TS_REPRO_MODEL_ROOT}/timer
+official_revision: 1ff8d1afc073182e6d46022069ff32470ab47945
+official_checkpoint: thuml/timer-base-84m
+runtime_requirements: ["python==3.10", "transformers==4.40.1", "tokenizers==0.19.1"]
+commands: {predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/timer_bridge.py", predict]}

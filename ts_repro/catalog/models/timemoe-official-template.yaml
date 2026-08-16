@@ -1,0 +1,13 @@
+name: timemoe-official
+priority: P2
+kind: official
+enabled: false
+disabled_reason: Production checkpoint-backed official API bridge is verified; enable only after full-series preprocessing and split mapping are sealed.
+adapter: command
+mode: zero-shot
+official_repository: https://github.com/Time-MoE/Time-MoE
+repository_dir: ${TS_REPRO_MODEL_ROOT}/timemoe
+official_revision: 915bfda4c78a544d62a2bec6ab22948423059236
+official_checkpoint: Maple728/TimeMoE-50M
+runtime_requirements: ["python==3.10", "transformers==4.40.1", "tokenizers==0.19.1"]
+commands: {predict: ["{python}", "${TS_REPRO_BRIDGE_ROOT}/timemoe_bridge.py", predict]}
