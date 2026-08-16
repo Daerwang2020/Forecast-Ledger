@@ -93,3 +93,7 @@ API client):
 The rest of the discoverability surface is already in the repository: a clear
 README, a runnable example, docs, CI, contribution and security policy, issue
 forms, and citation metadata.
+
+The public [Hugging Face evidence viewer](https://huggingface.co/spaces/Ziqianwwww/forecast-ledger-demo)
+now provides the shareable visual entry point; link it from release notes and
+community posts instead of sending readers directly to a long setup section.

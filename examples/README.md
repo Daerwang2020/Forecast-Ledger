@@ -11,7 +11,7 @@ needed.
 ## Run it
 
 ```bash
-cd ts-repro
+cd Forecast-Ledger
 python -m pip install -e .
 PYTHONPATH=. python examples/quickstart.py --output-dir /tmp/forecast-ledger-demo
 python -m http.server 8000 --directory /tmp/forecast-ledger-demo/viewer

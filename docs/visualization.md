@@ -5,7 +5,7 @@ It is intentionally an evidence view, not a leaderboard or a new metric
 implementation.
 
 ```bash
-cd ts-repro
+cd Forecast-Ledger
 tsr visualize --runs-dir experiments --output-dir viewer
 python -m http.server 8000 --directory viewer
 ```

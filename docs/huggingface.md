@@ -15,7 +15,7 @@ Create a Hugging Face user token with permission to create and write to a
 Space, then run:
 
 ```bash
-cd ts-repro
+cd Forecast-Ledger
 export HF_TOKEN='hf_...'
 python -m pip install huggingface_hub
 python scripts/publish_huggingface.py

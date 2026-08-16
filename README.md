@@ -4,6 +4,13 @@ _TS-Repro is the stable package and CLI name._
 
 [![CI](https://github.com/Daerwang2020/Forecast-Ledger/actions/workflows/ci.yml/badge.svg)](https://github.com/Daerwang2020/Forecast-Ledger/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Python 3.10–3.12](https://img.shields.io/badge/python-3.10%E2%80%933.12-3776ab.svg)](pyproject.toml)
 
+<p align="center">
+  <a href="https://huggingface.co/spaces/Ziqianwwww/forecast-ledger-demo">Live demo</a> ·
+  <a href="docs/index.md">Documentation</a> ·
+  <a href="examples/README.md">Five-minute case study</a> ·
+  <a href="docs/model-bindings.md">22 model bindings</a>
+</p>
+
 **Run every official forecasting model under exactly the same experimental protocol.**
 
 <p align="center">
@@ -12,10 +19,39 @@ _TS-Repro is the stable package and CLI name._
 
 <p align="center"><em>Figure 1. Forecast Ledger separates the scientific question from the model implementation, then turns each run into inspectable evidence.</em></p>
 
-TS-Repro is a small, local-first toolkit for fair and reproducible time-series
-forecasting evaluation. It is not a leaderboard, a new model, a benchmark, or
-an audit service. It standardizes the evidence around a model while leaving the
-model implementation, optimizer, checkpoints, and repository untouched.
+Forecast Ledger is a local-first reproducibility layer for fair time-series
+forecasting. It is not a leaderboard, a new model, or a replacement benchmark:
+it freezes the protocol, calls the official implementation, and seals the
+resulting evidence while leaving upstream code and checkpoints untouched.
+
+## Try it in five minutes
+
+The public [Hugging Face evidence viewer](https://huggingface.co/spaces/Ziqianwwww/forecast-ledger-demo)
+shows a sealed run without requiring a GPU. To run the same case locally:
+
+```bash
+git clone https://github.com/Daerwang2020/Forecast-Ledger.git
+cd Forecast-Ledger
+python -m pip install -e .
+PYTHONPATH=. python examples/quickstart.py --output-dir /tmp/forecast-ledger-demo
+python -m http.server 8000 --directory /tmp/forecast-ledger-demo/viewer
+```
+
+Open <http://localhost:8000>. The [case study](examples/README.md) also gives
+the equivalent CLI path and explains every artifact.
+
+## What you get
+
+| Need | Forecast Ledger output |
+| --- | --- |
+| Freeze the question | Dataset manifest, split, context, horizon, normalization, and seed |
+| Run official code | Pinned checkout, revision, bridge command, checkpoint and runtime provenance |
+| Check the result | `predictions.npz`, `metrics.json`, `report.md`, and a target-vs-prediction viewer |
+| Verify before citing | Read-only run directory plus a hash manifest and `tsr verify` |
+| Compare without a leaderboard | Machine-readable comparison CSV/JSON/TeX and explicit evidence states |
+
+The core is dependency-light (`numpy`, `pandas`, and `PyYAML`); optional model
+dependencies stay in their official environments.
 
 The symbols in the figure are intentionally literal: a shield means the
 protocol is locked, a plug marks the narrow official-API seam, an orange arrow
@@ -63,7 +99,7 @@ third-party reimplementation for an "official" run.
 ## Install
 
 ```bash
-cd ts-repro
+cd Forecast-Ledger
 python -m pip install -e '.[dev]'
 ```
 
