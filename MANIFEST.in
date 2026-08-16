@@ -4,6 +4,8 @@ include CITATION.cff
 recursive-include ts_repro/catalog *.yaml
 recursive-include docs *.md
 recursive-include docs/assets *.svg
+recursive-include examples *.py
+recursive-include examples *.md
 recursive-include viewer *.html
 global-exclude ._*
 global-exclude __pycache__

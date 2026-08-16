@@ -66,7 +66,7 @@ parameters:
         encoding="utf-8",
     )
     (root / "README.md").write_text(
-        """# TS-Repro quickstart
+        """# Forecast Ledger quickstart
 
 This directory is generated locally; it contains a deterministic toy CSV and a
 reference-only model so the full experiment-manifest flow can be exercised
@@ -75,6 +75,8 @@ without network access or a GPU.
 ```bash
 tsr run --model reference-linear --models-dir models --dataset toy --datasets-dir datasets --output-dir experiments
 tsr verify experiments/<run-directory>
+tsr visualize --runs-dir experiments --output-dir viewer
+python -m http.server 8000 --directory viewer
 ```
 """,
         encoding="utf-8",

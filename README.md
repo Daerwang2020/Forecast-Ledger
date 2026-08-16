@@ -88,7 +88,7 @@ scripts/build-wheel.sh /private/tmp/ts-repro-wheels
 ```bash
 tsr init-example ./quickstart
 cd quickstart
-tsr run --model reference-linear --dataset toy --output-dir experiments
+tsr run --model reference-linear --models-dir models --dataset toy --datasets-dir datasets --output-dir experiments
 tsr verify experiments/<printed-run-directory>
 ```
 
@@ -111,6 +111,9 @@ python -m pytest
 ```
 
 The maintained gap audit is in [docs/project-gap-audit.md](docs/project-gap-audit.md).
+
+For the canonical case study, including a Python API example and an annotated
+pipeline figure, see [examples/README.md](examples/README.md).
 
 `reference-linear` is a built-in deterministic sanity-check adapter. It is
 clearly labelled **reference**, not an official forecasting model and not a

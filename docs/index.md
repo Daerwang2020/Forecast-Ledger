@@ -11,6 +11,8 @@ Start here when adding a model, dataset, or result view.
 7. [Bridge verification](bridge-verification.md) — interface-gate evidence and its limits.
 8. [Release checklist](release-checklist.md) — the quality gates used before publishing.
 9. [Project gap audit](project-gap-audit.md) — what was borrowed, closed, and intentionally deferred.
+10. [Canonical case study](../examples/README.md) — the five-minute Python and CLI path.
+11. [Discoverability](discoverability.md) — repository metadata and release practices that help useful work get found.
 
 ## Design principles
 
