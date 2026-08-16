@@ -13,6 +13,7 @@ Start here when adding a model, dataset, or result view.
 9. [Project gap audit](project-gap-audit.md) — what was borrowed, closed, and intentionally deferred.
 10. [Canonical case study](../examples/README.md) — the five-minute Python and CLI path.
 11. [Discoverability](discoverability.md) — repository metadata and release practices that help useful work get found.
+12. [Hugging Face publication](huggingface.md) — publish the public-safe browser demo and collection.
 
 ## Design principles
 
