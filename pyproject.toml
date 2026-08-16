@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=7.0"]
+dev = ["pytest>=7.0", "build>=1.2"]
 
 [project.scripts]
 tsr = "ts_repro.cli:main"
@@ -27,7 +27,7 @@ tsr = "ts_repro.cli:main"
 include = ["ts_repro*"]
 
 [tool.setuptools.package-data]
-ts_repro = ["catalog/models/*.yaml", "catalog/datasets/*.yaml"]
+ts_repro = ["catalog/models/*.yaml", "catalog/datasets/*.yaml", "viewer/*.html"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

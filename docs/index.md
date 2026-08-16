@@ -9,6 +9,8 @@ Start here when adding a model, dataset, or result view.
 5. [Visualization](visualization.md) — build and use the local evidence browser.
 6. [Reference repositories](reference-repositories.md) — what we learned from established projects.
 7. [Bridge verification](bridge-verification.md) — interface-gate evidence and its limits.
+8. [Release checklist](release-checklist.md) — the quality gates used before publishing.
+9. [Project gap audit](project-gap-audit.md) — what was borrowed, closed, and intentionally deferred.
 
 ## Design principles
 

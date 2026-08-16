@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "Forecast Ledger"
+version: 0.1.0
+type: software
+message: "If Forecast Ledger supports your research, please cite the repository and the official model papers used by your runs."
+abstract: "A local-first, manifest-backed protocol runner for fair and reproducible time-series forecasting evaluation."
+repository-code: "https://github.com/Daerwang2020/Forecast-Ledger"
+license: MIT
+date-released: 2026-08-16
+authors:
+  - name: "Forecast Ledger Contributors"

@@ -13,6 +13,8 @@ from typing import Any
 
 import numpy as np
 
+from .errors import ManifestError
+from .manifest import verify_directory
 
 _METRICS = ("mse", "mae", "rmse", "mape", "smape")
 
@@ -82,6 +84,14 @@ def collect_runs(runs_dir: str | Path, max_points: int = 128) -> list[dict[str, 
             display_path = str(run_dir.relative_to(root))
         except ValueError:
             display_path = run_dir.name
+        if (run_dir / "manifest.json").is_file():
+            try:
+                verify_directory(run_dir)
+                evidence_state = "valid"
+            except ManifestError:
+                evidence_state = "invalid"
+        else:
+            evidence_state = "unsealed"
         record: dict[str, Any] = {
             "id": run_dir.name,
             # Keep generated viewers portable and avoid embedding the host's
@@ -91,7 +101,10 @@ def collect_runs(runs_dir: str | Path, max_points: int = 128) -> list[dict[str, 
             "dataset": str(row.get("dataset") or "unknown"),
             "mode": str(row.get("mode") or "unknown"),
             "seed": row.get("seed"),
-            "sealed": (run_dir / "manifest.json").is_file(),
+            # A manifest's presence is not enough: a tampered run must be
+            # visibly different from valid sealed evidence in the browser.
+            "sealed": evidence_state == "valid",
+            "evidence_state": evidence_state,
             "metrics": {key: _number(metrics.get(key, row.get(key))) for key in _METRICS},
             "runtime": {
                 "training_time_s": _number(row.get("training_time_s")),
@@ -107,7 +120,11 @@ def build_viewer(runs_dir: str | Path, output_dir: str | Path, max_points: int =
     """Write a self-contained static viewer and return its index path."""
     output = Path(output_dir).expanduser().resolve()
     output.mkdir(parents=True, exist_ok=True)
-    template = Path(__file__).resolve().parents[1] / "viewer" / "index.html"
+    # The package-owned copy keeps `tsr visualize` working after a wheel
+    # install; the repository copy remains a convenient source-tree preview.
+    template = Path(__file__).resolve().parent / "viewer" / "index.html"
+    if not template.is_file():
+        template = Path(__file__).resolve().parents[1] / "viewer" / "index.html"
     html = template.read_text(encoding="utf-8")
     html = html.replace("const RUNS = [];", "const RUNS = " + json.dumps(collect_runs(runs_dir, max_points), ensure_ascii=False) + ";")
     index = output / "index.html"

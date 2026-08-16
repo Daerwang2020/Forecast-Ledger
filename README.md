@@ -2,6 +2,8 @@
 
 _TS-Repro is the stable package and CLI name._
 
+[![CI](https://github.com/Daerwang2020/Forecast-Ledger/actions/workflows/ci.yml/badge.svg)](https://github.com/Daerwang2020/Forecast-Ledger/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Python 3.10–3.12](https://img.shields.io/badge/python-3.10%E2%80%933.12-3776ab.svg)](pyproject.toml)
+
 **Run every official forecasting model under exactly the same experimental protocol.**
 
 <p align="center">
@@ -65,6 +67,12 @@ cd ts-repro
 python -m pip install -e '.[dev]'
 ```
 
+Or install the current public revision directly:
+
+```bash
+python -m pip install 'ts-repro @ git+https://github.com/Daerwang2020/Forecast-Ledger.git'
+```
+
 Only `numpy`, `pandas`, and `PyYAML` are required for the core. Official model
 dependencies remain inside their own checkouts.
 
@@ -94,6 +102,15 @@ python -m http.server 8000 --directory viewer
 See [docs/index.md](docs/index.md) for the project map and
 [docs/product-name.md](docs/product-name.md) for the naming and design
 language.
+
+For a clean install and API-level smoke test, use the same path as CI:
+
+```bash
+python -m pip install -e '.[dev]'
+python -m pytest
+```
+
+The maintained gap audit is in [docs/project-gap-audit.md](docs/project-gap-audit.md).
 
 `reference-linear` is a built-in deterministic sanity-check adapter. It is
 clearly labelled **reference**, not an official forecasting model and not a
@@ -202,5 +219,7 @@ closure alone is an interface result, not a paper claim.
 
 Please add a model through an official command adapter, pin the upstream
 revision, document the command and output mapping, and include an end-to-end
-test using a small public fixture. Never commit downloaded datasets,
-checkpoints, or unverified result tables.
+test using a small public fixture. Never commit downloaded datasets, model
+weights, or unverified result tables. See [CONTRIBUTING.md](CONTRIBUTING.md),
+[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), [SECURITY.md](SECURITY.md), and
+[CITATION.cff](CITATION.cff) before opening a change.

@@ -139,6 +139,17 @@ def test_visualization_collects_sealed_run_and_builds_static_viewer(tmp_path: Pa
     assert result.run_dir.name in html
 
 
+def test_visualization_marks_manifest_tampering_as_invalid(tmp_path: Path) -> None:
+    model, dataset = _configs(tmp_path)
+    result = run_experiment(model, dataset, output_dir=tmp_path / "experiments", seed=18)
+    target = result.run_dir / "metrics.json"
+    target.chmod(0o644)
+    target.write_text(target.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+    records = collect_runs(tmp_path / "experiments")
+    assert records[0]["evidence_state"] == "invalid"
+    assert records[0]["sealed"] is False
+
+
 def test_visualize_cli_accepts_empty_directory(tmp_path: Path) -> None:
     env = dict(os.environ)
     env["PYTHONPATH"] = str(Path(__file__).resolve().parents[1])
@@ -151,6 +162,13 @@ def test_visualize_cli_accepts_empty_directory(tmp_path: Path) -> None:
     )
     assert completed.stdout.strip().endswith("index.html")
     assert (tmp_path / "viewer" / "index.html").is_file()
+
+
+def test_viewer_source_and_package_templates_stay_synchronized() -> None:
+    root = Path(__file__).resolve().parents[1]
+    source = (root / "viewer" / "index.html").read_text(encoding="utf-8").rstrip()
+    packaged = (root / "ts_repro" / "viewer" / "index.html").read_text(encoding="utf-8").rstrip()
+    assert source == packaged
 
 
 def test_builtin_catalogs_parse_and_preflight_reports_readiness(tmp_path: Path) -> None:

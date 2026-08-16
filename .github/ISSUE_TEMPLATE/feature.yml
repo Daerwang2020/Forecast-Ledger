@@ -1,0 +1,19 @@
+name: Feature request
+description: Propose a focused improvement to the evidence workflow.
+title: "[feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Research workflow problem
+      description: What reproducibility or usability problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed interface
+      description: Describe the smallest command, catalog, or viewer change that would help.
+    validations:
+      required: true

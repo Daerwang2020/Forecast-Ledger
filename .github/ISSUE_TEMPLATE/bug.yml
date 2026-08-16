@@ -1,0 +1,27 @@
+name: Bug report
+description: Report a reproducible problem in the runner, bridge, catalog, or viewer.
+title: "[bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Please remove credentials, private paths, and unpublished data before posting.
+  - type: input
+    id: revision
+    attributes:
+      label: Forecast Ledger revision
+      placeholder: git commit or release tag
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include the command, catalog entry, expected behavior, and actual output.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Paste a redacted transcript or link to a sanitized artifact.
