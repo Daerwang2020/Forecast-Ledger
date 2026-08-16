@@ -1,3 +1,0 @@
-gradio>=5.0,<6
-matplotlib>=3.8
-git+https://github.com/Daerwang2020/Forecast-Ledger.git

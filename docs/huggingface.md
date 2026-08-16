@@ -1,9 +1,13 @@
 # Hugging Face publication
 
-The repository contains a public-safe Gradio Space in
+The repository contains a public-safe Static Space in
 `deploy/huggingface-space/`. It runs only the generated toy case and the
 deterministic `reference-linear` sanity adapter. It never uploads local data,
 model weights, or experiment artifacts.
+
+The publisher creates the sealed run locally, embeds its viewer as one
+self-contained `index.html`, and uploads that page. This keeps the demo
+available without requiring a paid hosted inference runtime.
 
 ## Publish with an API token
 
@@ -28,6 +32,8 @@ python scripts/publish_huggingface.py
 The publisher also creates or reuses a collection named **Fair Time-Series
 Forecasting Reproduction** and adds the Space to it. Use `--no-collection` if
 you only want the Space.
+
+Published demo: [Forecast Ledger evidence viewer](https://huggingface.co/spaces/Ziqianwwww/forecast-ledger-demo). Published collection: [Fair Time-Series Forecasting Reproduction](https://huggingface.co/collections/Ziqianwwww/fair-time-series-forecasting-reproduction-6a81415d8bdcaba4b5ba3195).
 
 The Hub supports public Dataset Cards, Model Cards, Spaces, and Collections as
 discoverable project surfaces. See the [Hub documentation](https://huggingface.co/docs/hub)

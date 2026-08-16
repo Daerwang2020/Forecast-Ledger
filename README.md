@@ -115,6 +115,9 @@ The maintained gap audit is in [docs/project-gap-audit.md](docs/project-gap-audi
 For the canonical case study, including a Python API example and an annotated
 pipeline figure, see [examples/README.md](examples/README.md).
 
+Try the public [Hugging Face evidence viewer](https://huggingface.co/spaces/Ziqianwwww/forecast-ledger-demo)
+or browse the [Fair Time-Series Forecasting Reproduction collection](https://huggingface.co/collections/Ziqianwwww/fair-time-series-forecasting-reproduction-6a81415d8bdcaba4b5ba3195).
+
 `reference-linear` is a built-in deterministic sanity-check adapter. It is
 clearly labelled **reference**, not an official forecasting model and not a
 paper baseline.
